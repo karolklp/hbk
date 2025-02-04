@@ -49,7 +49,7 @@ const Slideshow = ({
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
-          src={`public/photos/${images[currentIndex]}`}
+          src={`photos/${images[currentIndex]}`}
           alt={`Slide ${currentIndex + 1}`}
           className="w-full h-full object-cover"
           initial={{ opacity: 0 }}
