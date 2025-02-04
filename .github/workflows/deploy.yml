@@ -8,7 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    env:
+        VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
