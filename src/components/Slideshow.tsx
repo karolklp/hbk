@@ -28,8 +28,7 @@ const Slideshow = ({
     "5a_TKS09718_32+3_2048_logo.jpg",
     "5b_TKS09860_32+3_2048.jpg",
     "5c_TKS09875_32+3_2048.jpg",
-    "6a_KOSS_17.jpg",
-    "6c_272295993_651222106332480_1948810693727900414_n.jpg"
+    "6a_KOSS_17.jpg"
   ],
 }: SlideshowProps) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
