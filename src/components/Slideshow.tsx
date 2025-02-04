@@ -1,8 +1,8 @@
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "./ui/button";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
 import { ContactInfo } from "./ContactInfo";
+import { Button } from "./ui/button";
 
 interface SlideshowProps {
   images?: string[];
@@ -10,9 +10,26 @@ interface SlideshowProps {
 
 const Slideshow = ({
   images = [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-    "https://images.unsplash.com/photo-1600607687644-aac13aab3e96",
+    "1a_DSC04548.jpg",
+    "1b_Tpairs_TKS07427_32+3_2048.jpg",
+    "1d_DSC04792.jpg",
+    "2a_Tpairs_TKS07427_32+3_2048.jpg",
+    "2b_Tpairs_TKS07601_32+3_2048.jpg",
+    "3a_DSC09355_32+1.jpg",
+    "3b_DSC09297_32+3_1600_logo.jpg",
+    "3c_DSC09342_32+3_1600_logo.jpg",
+    "3d_DSC09254_32+1.jpg",
+    "3e_Tpairs_TKS07427_32+3_2048.jpg",
+    "3f_Tpairs_TKS07427_32+3_2048.jpg",
+    "3g_DSC09731_32+1.jpg",
+    "3t_DSC09700_32+1.jpg",
+    "4a_17.jpg",
+    "4b_3.jpg",
+    "5a_TKS09718_32+3_2048_logo.jpg",
+    "5b_TKS09860_32+3_2048.jpg",
+    "5c_TKS09875_32+3_2048.jpg",
+    "6a_KOSS_17.jpg",
+    "6c_272295993_651222106332480_1948810693727900414_n.jpg"
   ],
 }: SlideshowProps) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -32,7 +49,7 @@ const Slideshow = ({
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
-          src={images[currentIndex]}
+          src={`public/photos/${images[currentIndex]}`}
           alt={`Slide ${currentIndex + 1}`}
           className="w-full h-full object-cover"
           initial={{ opacity: 0 }}

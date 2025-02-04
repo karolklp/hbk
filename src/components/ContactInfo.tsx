@@ -1,5 +1,5 @@
-import { User, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { User, X } from "lucide-react";
 import { useState } from "react";
 
 export function ContactInfo() {
@@ -10,8 +10,8 @@ export function ContactInfo() {
       <motion.div
         initial={false}
         animate={{
-          width: isOpen ? 256 : 40,
-          height: isOpen ? 180 : 40,
+          width: isOpen ? 245 : 40,
+          height: isOpen ? 160 : 40,
         }}
         style={{ pointerEvents: "all" }}
         transition={{
@@ -40,7 +40,7 @@ export function ContactInfo() {
         <motion.div
           animate={{ opacity: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3 }}
-          className="pl-12 pr-4 py-3"
+          className="pl-12 pr-4 py-2"
         >
           <div className="space-y-4">
             <div className="text-xl font-semibold text-white">
@@ -49,16 +49,16 @@ export function ContactInfo() {
             <div className="space-y-2 text-white/80">
               <div>Copenhagen</div>
               <a
-                href="mailto:contact@email.com"
+                href="mailto:hanna@klepacka.pro"
                 className="block hover:text-white transition-colors"
               >
-                contact@email.com
+                hanna@klepacka.pro
               </a>
               <a
-                href="tel:+4512345678"
+                href="tel:+4551526060"
                 className="block hover:text-white transition-colors"
               >
-                +45 12 34 56 78
+                +45 51 52 60 60
               </a>
             </div>
           </div>
