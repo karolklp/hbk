@@ -107,11 +107,7 @@ const Slideshow = ({
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
-          src={
-            isPortrait
-              ? `https://images.unsplash.com/photo-1590333748338-d629e4564ad9?w=800&h=1200&fit=crop`
-              : `photos/${currentImages[currentIndex]}`
-          }
+          src={`photos/${currentImages[currentIndex]}`}
           alt={`Slide ${currentIndex + 1}`}
           className="w-full h-full object-cover"
           initial={{ opacity: 0 }}
