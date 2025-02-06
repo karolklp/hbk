@@ -5,11 +5,12 @@ import { ContactInfo } from "./ContactInfo";
 import { Button } from "./ui/button";
 
 interface SlideshowProps {
-  images?: string[];
+  landscapeImages?: string[];
+  portraitImages?: string[];
 }
 
 const Slideshow = ({
-  images = [
+  landscapeImages = [
     "1a_DSC04548.jpg",
     "1b_Tpairs_TKS07427_32+3_2048.jpg",
     "1d_DSC04792.jpg",
@@ -28,17 +29,40 @@ const Slideshow = ({
     "5a_TKS09718_32+3_2048_logo.jpg",
     "5b_TKS09860_32+3_2048.jpg",
     "5c_TKS09875_32+3_2048.jpg",
-    "6a_KOSS_17.jpg"
+    "6a_KOSS_17.jpg",
+  ],
+  portraitImages = [
+    "portrait/modern-building-1.jpg",
+    "portrait/interior-design-1.jpg",
+    "portrait/facade-detail-1.jpg",
+    "portrait/staircase-1.jpg",
+    "portrait/minimal-space-1.jpg",
   ],
 }: SlideshowProps) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [isPortrait, setIsPortrait] = React.useState(
+    window.innerHeight > window.innerWidth,
+  );
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const currentImages = isPortrait ? portraitImages : landscapeImages;
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+    setCurrentIndex((prev) => (prev + 1) % currentImages.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + currentImages.length) % currentImages.length,
+    );
   };
 
   return (
@@ -48,7 +72,11 @@ const Slideshow = ({
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
-          src={`photos/${images[currentIndex]}`}
+          src={
+            isPortrait
+              ? `https://images.unsplash.com/photo-1590333748338-d629e4564ad9?w=800&h=1200&fit=crop`
+              : `photos/${currentImages[currentIndex]}`
+          }
           alt={`Slide ${currentIndex + 1}`}
           className="w-full h-full object-cover"
           initial={{ opacity: 0 }}
@@ -78,7 +106,7 @@ const Slideshow = ({
       </div>
 
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-        {images.map((_, index) => (
+        {currentImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
